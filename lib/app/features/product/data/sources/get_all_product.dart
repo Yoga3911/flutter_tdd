@@ -17,8 +17,7 @@ class RemoteProductSourceImpl implements RemoteProductSource {
 
   Future<dynamic> _getAllData(String path) async {
     try {
-      final response = await _dio
-          .get("https://my-golang-project.herokuapp.com/api/v1/product");
+      final response = await _dio.get(path);
       if (response.statusCode == 200) {
         List<Product> productData = [];
 
