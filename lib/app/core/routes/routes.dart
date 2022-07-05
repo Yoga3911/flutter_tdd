@@ -1,10 +1,12 @@
 
 import 'routes_import.dart';
 
-class MyRouteInit {
-  MyRouteInit._();
+class MyRoute {
+  MyRoute._();
+
+  static const home = "/home";
 
   static final data = <String, WidgetBuilder>{
-    MyRoute.home: (context) => const HomePage()
+    home: (context) => const HomePage()
   };
 }

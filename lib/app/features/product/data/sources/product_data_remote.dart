@@ -23,13 +23,15 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
 
       final response = await dio.get(path, options: Options(headers: header));
       if (response.statusCode == 200) {
-        List<ProductModel> productData = [];
+        if (response.data["data"] != null) {
+          List<ProductModel> productData = [];
 
-        for (var element in (response.data["data"] as List<dynamic>)) {
-          productData.add(ProductModel.fromJson(element));
+          for (var element in (response.data["data"] as List<dynamic>)) {
+            productData.add(ProductModel.fromJson(element));
+          }
+
+          return productData;
         }
-
-        return productData;
       }
     } catch (e) {
       log(e.toString());

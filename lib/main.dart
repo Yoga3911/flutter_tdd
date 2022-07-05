@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/app/core/providers/init.dart';
+import 'package:provider/provider.dart';
 
 import 'app/core/routes/routes.dart';
-import 'app/core/routes/routes_name.dart';
+import 'injection.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setup();
   runApp(const MyWidget());
 }
 
@@ -12,10 +16,13 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: MyRouteInit.data,
-      initialRoute: MyRoute.home,
+    return MultiProvider(
+      providers: MyProvider.data,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: MyRoute.data,
+        initialRoute: MyRoute.home,
+      ),
     );
   }
 }
