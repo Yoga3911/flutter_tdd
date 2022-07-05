@@ -1,17 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 
-part 'product_model.freezed.dart';
+class ProductModel extends ProductEntity {
+  const ProductModel({
+    required super.name,
+    required super.price,
+    required super.quantity,
+  });
 
-part 'product_model.g.dart';
-
-@freezed
-class Product with _$Product {
-  const factory Product({
-    required String name,
-    required int price,
-    required int quantity,
-  }) = _Product;
-
-  factory Product.fromJson(Map<String, Object?> json) =>
-      _$ProductFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+        name: json["name"],
+        price: json["price"],
+        quantity: json["quantity"],
+      );
 }

@@ -6,7 +6,7 @@ import '../../../../core/constants/endpoint.dart';
 import '../models/product_model.dart';
 
 abstract class ProductDataSourceRemote {
-  Future<List<Product>> getAllData();
+  Future<List<ProductModel>> getAllData();
 }
 
 class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
@@ -14,19 +14,19 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
   ProductDataSourceRemoteImpl({required this.dio});
 
   @override
-  Future<List<Product>> getAllData() =>
+  Future<List<ProductModel>> getAllData() =>
       _getAllData(ApiURL.baseUrl + ApiURL.getAllProduct);
 
-  Future<List<Product>> _getAllData(String path) async {
+  Future<List<ProductModel>> _getAllData(String path) async {
     try {
       const header = {'Content-Type': 'application/json'};
 
       final response = await dio.get(path, options: Options(headers: header));
       if (response.statusCode == 200) {
-        List<Product> productData = [];
+        List<ProductModel> productData = [];
 
         for (var element in (response.data["data"] as List<dynamic>)) {
-          productData.add(Product.fromJson(element));
+          productData.add(ProductModel.fromJson(element));
         }
 
         return productData;

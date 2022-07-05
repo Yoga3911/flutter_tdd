@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +24,7 @@ class MyListView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        final data = (snapshot.data as Right<Failure, List<Product>>).value;
+        final data = (snapshot.data as Right<Failure, List<ProductModel>>).value;
         return ListView.builder(
           itemCount: data.length,
           itemBuilder: (_, index) {
