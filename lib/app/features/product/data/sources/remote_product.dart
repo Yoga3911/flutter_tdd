@@ -1,23 +1,27 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:my_project/app/constants/endpoint.dart';
-import 'package:my_project/app/features/product/data/models/product_model.dart';
+
+import '../../../../../app/constants/endpoint.dart';
+import '../models/product_model.dart';
 
 abstract class RemoteProductSource {
-  Future<dynamic> getAllData();
+  Future<List<Product>> getAllData();
 }
 
 class RemoteProductSourceImpl implements RemoteProductSource {
-  final Dio _dio = Dio();
+  final Dio dio;
+  RemoteProductSourceImpl({required this.dio});
 
   @override
-  Future<dynamic> getAllData() =>
+  Future<List<Product>> getAllData() =>
       _getAllData(ApiURL.baseUrl + ApiURL.getAllProduct);
 
-  Future<dynamic> _getAllData(String path) async {
+  Future<List<Product>> _getAllData(String path) async {
     try {
-      final response = await _dio.get(path);
+      const header = {'Content-Type': 'application/json'};
+
+      final response = await dio.get(path, options: Options(headers: header));
       if (response.statusCode == 200) {
         List<Product> productData = [];
 
@@ -31,5 +35,7 @@ class RemoteProductSourceImpl implements RemoteProductSource {
       log(e.toString());
       rethrow;
     }
+
+    return [];
   }
 }
