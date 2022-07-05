@@ -2,16 +2,16 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../../../../app/constants/endpoint.dart';
+import '../../../../core/constants/endpoint.dart';
 import '../models/product_model.dart';
 
-abstract class RemoteProductSource {
+abstract class ProductDataSourceRemote {
   Future<List<Product>> getAllData();
 }
 
-class RemoteProductSourceImpl implements RemoteProductSource {
+class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
   final Dio dio;
-  RemoteProductSourceImpl({required this.dio});
+  ProductDataSourceRemoteImpl({required this.dio});
 
   @override
   Future<List<Product>> getAllData() =>

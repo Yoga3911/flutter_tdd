@@ -1,5 +1,7 @@
-import 'app/routes/routes.dart';
-import 'app/routes/routes_import.dart';
+import 'package:flutter/material.dart';
+
+import 'app/core/routes/routes.dart';
+import 'app/core/routes/routes_name.dart';
 
 void main() {
   runApp(const MyWidget());
