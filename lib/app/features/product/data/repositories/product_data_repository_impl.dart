@@ -33,8 +33,8 @@ class ProductDataRepositoryImpl implements ProductDataRepository {
   }
 
   @override
-  Future<Either<Failure, InsertProductEntity>> insertData() async {
-    return _insertProduct(() => remoteDataSource.insertProduct());
+  Future<Either<Failure, InsertProductEntity>> insertData(InsertProductModel insertProductModel) async {
+    return _insertProduct(() => remoteDataSource.insertProduct(insertProductModel));
   }
 
   Future<Either<Failure, InsertProductEntity>> _insertProduct(
