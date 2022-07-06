@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -8,7 +9,8 @@ import '../models/product_model.dart';
 
 abstract class ProductDataSourceRemote {
   Future<List<ProductModel>> getAllData();
-  Future<InsertProductModel> insertProduct();
+  Future<InsertProductModel> insertProduct(
+      InsertProductModel insertProductModel);
 }
 
 class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
@@ -48,17 +50,25 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
 
   //! INSERT PRODUCT
   @override
-  Future<InsertProductModel> insertProduct() async =>
-      _insertProduct(ApiURL.baseUrl + ApiURL.product);
+  Future<InsertProductModel> insertProduct(
+          InsertProductModel insertProductModel) async =>
+      _insertProduct(ApiURL.baseUrl + ApiURL.product, insertProductModel);
 
-  Future<InsertProductModel> _insertProduct(String path) async {
+  Future<InsertProductModel> _insertProduct(
+      String path, InsertProductModel insertProductModel) async {
     try {
       const header = {
         'Content-Type': 'application/json',
-        'Authorization': '',
+        'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3MjEyMjYzLCJpYXQiOjE2NTcxMjU4NjMsImlzcyI6Im15cHJvamVjdCJ9.R8SPUfHKK_h6ro7uDT6rA5W0IkUa4SomaFO-ZjdA5j8',
       };
 
-      final response = await dio.post(path, options: Options(headers: header));
+      final body = jsonEncode(insertProductModel.toJson());
+
+      final response = await dio.post(
+        path,
+        options: Options(headers: header),
+        data: body,
+      );
       if (response.statusCode == 200) {
         log("Insert success!");
         return const InsertProductModel(
@@ -72,7 +82,7 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
       log(e.toString());
       rethrow;
     }
-    
+
     return const InsertProductModel(
       productName: "",
       price: 0,
