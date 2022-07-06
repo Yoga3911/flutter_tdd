@@ -5,8 +5,16 @@ class InsertProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Add Product"),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios_rounded),
+        ),
+      ),
+      body: const Center(
         child: Text("Insert Page"),
       ),
     );
