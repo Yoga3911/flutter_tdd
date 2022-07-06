@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:my_project/app/core/routes/routes_import.dart';
 import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
+import 'package:my_project/app/features/product/data/models/product_model.dart';
 import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
 import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 import 'package:my_project/app/features/product/domain/usecases/insert_product_usecase.dart';
@@ -19,10 +22,23 @@ class ProductProvider with ChangeNotifier {
     addProduct = getIt.get<InsertProductUseCase>();
   }
 
-  Future<List<ProductEntity>> getAllProduct() async {
+  List<ProductEntity> _productData = [];
+  set setProductData(List<ProductEntity> data) {
+    _productData = data;
+    notifyListeners();
+  }
+
+  set insertProductData(ProductEntity data) {
+    _productData.add(data);
+    notifyListeners();
+  }
+
+  List<ProductEntity> get getProductData => _productData;
+
+  Future<void> getAllProduct() async {
     final data = await getProduct.call(const Params(number: 0))
         as Right<Failure, List<ProductEntity>>;
-    return data.value;
+    setProductData = data.value;
   }
 
   Future<InsertProductEntity> insertProduct({
@@ -36,6 +52,11 @@ class ProductProvider with ChangeNotifier {
       price: price,
       quantity: quantity,
       description: description,
+    );
+    insertProductData = ProductModel(
+      name: productName,
+      price: price,
+      quantity: quantity,
     );
     final data = await addProduct.call(insertData)
         as Right<Failure, InsertProductEntity>;
