@@ -11,12 +11,15 @@ class MySaveFAB extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         final product = context.read<TextFieldProvider>();
-        context.read<ProductProvider>().insertProduct(
+        context
+            .read<ProductProvider>()
+            .insertProduct(
               productName: product.productName.text,
               price: int.parse(product.price.text),
               quantity: int.parse(product.quantity.text),
               description: product.description.text,
-            );
+            )
+            .whenComplete(() => Navigator.pop(context));
       },
       child: const Icon(
         Icons.save_rounded,
