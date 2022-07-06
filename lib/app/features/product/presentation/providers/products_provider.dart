@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:my_project/app/core/routes/routes_import.dart';
 import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
