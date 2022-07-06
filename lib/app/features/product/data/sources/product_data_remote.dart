@@ -1,25 +1,30 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
 
 import '../../../../core/constants/endpoint.dart';
 import '../models/product_model.dart';
 
 abstract class ProductDataSourceRemote {
   Future<List<ProductModel>> getAllData();
+  Future<InsertProductModel> insertProduct();
 }
 
 class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
   final Dio dio;
-  ProductDataSourceRemoteImpl({required this.dio});
+  const ProductDataSourceRemoteImpl({required this.dio});
 
+  //! GET ALL PRODUCT
   @override
   Future<List<ProductModel>> getAllData() =>
-      _getAllData(ApiURL.baseUrl + ApiURL.getAllProduct);
+      _getAllData(ApiURL.baseUrl + ApiURL.product);
 
   Future<List<ProductModel>> _getAllData(String path) async {
     try {
-      const header = {'Content-Type': 'application/json'};
+      const header = {
+        'Content-Type': 'application/json',
+      };
 
       final response = await dio.get(path, options: Options(headers: header));
       if (response.statusCode == 200) {
@@ -39,5 +44,40 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
     }
 
     return [];
+  }
+
+  //! INSERT PRODUCT
+  @override
+  Future<InsertProductModel> insertProduct() async =>
+      _insertProduct(ApiURL.baseUrl + ApiURL.product);
+
+  Future<InsertProductModel> _insertProduct(String path) async {
+    try {
+      const header = {
+        'Content-Type': 'application/json',
+        'Authorization': '',
+      };
+
+      final response = await dio.post(path, options: Options(headers: header));
+      if (response.statusCode == 200) {
+        log("Insert success!");
+        return const InsertProductModel(
+          productName: "qwe",
+          price: 1,
+          quantity: 1,
+          description: "asd",
+        );
+      }
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+    
+    return const InsertProductModel(
+      productName: "",
+      price: 0,
+      quantity: 0,
+      description: "",
+    );
   }
 }
