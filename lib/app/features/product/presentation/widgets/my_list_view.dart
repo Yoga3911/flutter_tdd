@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/app/core/constants/color.dart';
+import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ProductModel>>(
+    return FutureBuilder<List<ProductEntity>>(
       future: context.read<ProductProvider>().getAllProduct(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

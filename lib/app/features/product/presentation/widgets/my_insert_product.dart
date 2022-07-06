@@ -9,33 +9,30 @@ class MyInsertProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => TextFieldProvider(),
-      builder: (ctx, _) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 30,
-          vertical: 10,
-        ),
-        child: Column(
-          children: [
-            MyTextField(
-              controller: ctx.read<TextFieldProvider>().productName,
-              label: "Product Name",
-            ),
-            MyTextField(
-              controller: ctx.read<TextFieldProvider>().price,
-              label: "Price",
-            ),
-            MyTextField(
-              controller: ctx.read<TextFieldProvider>().quantity,
-              label: "Quantity",
-            ),
-            MyTextField(
-              controller: ctx.read<TextFieldProvider>().description,
-              label: "Description",
-            ),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+        vertical: 10,
+      ),
+      child: Column(
+        children: [
+          MyTextField(
+            controller: context.read<TextFieldProvider>().productName,
+            label: "Product Name",
+          ),
+          MyTextField(
+            controller: context.read<TextFieldProvider>().price,
+            label: "Price",
+          ),
+          MyTextField(
+            controller: context.read<TextFieldProvider>().quantity,
+            label: "Quantity",
+          ),
+          MyTextField(
+            controller: context.read<TextFieldProvider>().description,
+            label: "Description",
+          ),
+        ],
       ),
     );
   }
