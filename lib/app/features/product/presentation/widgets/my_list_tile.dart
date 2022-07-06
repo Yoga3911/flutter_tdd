@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/features/product/data/models/product_model.dart';
 import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 
 class MyListTile extends StatelessWidget {

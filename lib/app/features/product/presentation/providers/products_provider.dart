@@ -8,7 +8,6 @@ import 'package:my_project/app/features/product/domain/usecases/insert_product_u
 import '../../../../../injection.dart';
 import '../../../../core/exceptions/failures.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../data/models/product_model.dart';
 import '../../domain/usecases/get_product_data_usecase.dart';
 
 class ProductProvider with ChangeNotifier {

@@ -4,7 +4,6 @@ import 'package:my_project/app/features/product/domain/entities/product_entity.d
 import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/models/product_model.dart';
 import 'my_list_tile.dart';
 
 class MyListView extends StatelessWidget {
