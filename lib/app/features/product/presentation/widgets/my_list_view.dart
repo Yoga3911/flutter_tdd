@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/app/core/constants/color.dart';
 import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,16 +16,23 @@ class MyListView extends StatelessWidget {
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: MyColor.red,
+            ),
           );
         }
-        if (!snapshot.hasData) {
-          return const SizedBox();
+        final data = snapshot.data;
+
+        if (data!.isEmpty) {
+          return const Center(
+            child: Text(
+              "Tidak ada data",
+            ),
+          );
         }
 
-        final data = snapshot.data;
         return ListView.builder(
-          itemCount: data!.length,
+          itemCount: data.length,
           itemBuilder: (_, index) {
             return MyListTile(product: data[index]);
           },

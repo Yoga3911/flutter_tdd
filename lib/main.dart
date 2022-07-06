@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/app/core/constants/color.dart';
 import 'package:my_project/app/core/providers/init.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ class MyWidget extends StatelessWidget {
       providers: MyProvider.data,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: MyColor.theme,
         routes: MyRoute.data,
         initialRoute: MyRoute.home,
       ),
