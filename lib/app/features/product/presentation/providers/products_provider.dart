@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:my_project/app/core/routes/routes_import.dart';
+import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
 import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
 import 'package:my_project/app/features/product/data/models/product_model.dart';
 import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
 import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
+import 'package:my_project/app/features/product/domain/usecases/delete_product_data_usecase.dart';
 import 'package:my_project/app/features/product/domain/usecases/insert_product_usecase.dart';
 
 import '../../../../../injection.dart';
@@ -14,10 +16,12 @@ import '../../domain/usecases/get_product_data_usecase.dart';
 class ProductProvider with ChangeNotifier {
   late GetProductDataUseCase getProduct;
   late InsertProductUseCase addProduct;
+  late DeleteDataUseCase removeProduct;
 
   ProductProvider() {
     getProduct = getIt.get<GetProductDataUseCase>();
     addProduct = getIt.get<InsertProductUseCase>();
+    removeProduct = getIt.get<DeleteDataUseCase>();
   }
 
   List<ProductEntity> _productData = [];
@@ -28,6 +32,11 @@ class ProductProvider with ChangeNotifier {
 
   set insertProductData(ProductEntity data) {
     _productData.add(data);
+    notifyListeners();
+  }
+
+  set deleteProductData(String productId) {
+    _productData.removeWhere((item) => item.id == productId);
     notifyListeners();
   }
 
@@ -52,12 +61,21 @@ class ProductProvider with ChangeNotifier {
       description: description,
     );
     insertProductData = ProductModel(
+      id: "",
       name: productName,
       price: price,
       quantity: quantity,
     );
     final data = await addProduct.call(insertData)
         as Right<Failure, InsertProductEntity>;
+    return data.value;
+  }
+
+  Future<dynamic> deleteProduct(DeleteProductModel deleteProductModel) async {
+    deleteProductData = deleteProductModel.productId;
+    final data =
+        await removeProduct.call(deleteProductModel) as Right<Failure, dynamic>;
+
     return data.value;
   }
 }
