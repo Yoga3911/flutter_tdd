@@ -18,11 +18,15 @@ class ProductProvider with ChangeNotifier {
   late InsertProductUseCase addProduct;
   late DeleteDataUseCase removeProduct;
 
-  ProductProvider() {
+  static final ProductProvider _single = ProductProvider._();
+
+  ProductProvider._() {
     getProduct = getIt.get<GetProductDataUseCase>();
     addProduct = getIt.get<InsertProductUseCase>();
     removeProduct = getIt.get<DeleteDataUseCase>();
   }
+
+  factory ProductProvider() => _single;
 
   List<ProductEntity> _productData = [];
   set setProductData(List<ProductEntity> data) {
@@ -71,11 +75,8 @@ class ProductProvider with ChangeNotifier {
     return data.value;
   }
 
-  Future<dynamic> deleteProduct(DeleteProductModel deleteProductModel) async {
+  Future<void> deleteProduct(DeleteProductModel deleteProductModel) async {
+    await removeProduct.call(deleteProductModel) as Right<Failure, dynamic>;
     deleteProductData = deleteProductModel.productId;
-    final data =
-        await removeProduct.call(deleteProductModel) as Right<Failure, dynamic>;
-
-    return data.value;
   }
 }

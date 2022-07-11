@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:my_project/app/features/product/presentation/providers/textfield_provider.dart';
+import 'package:my_project/app/utils/custom_loading.dart';
 import 'package:provider/provider.dart';
 
 class MySaveFAB extends StatelessWidget {
@@ -10,6 +11,10 @@ class MySaveFAB extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
+        showDialog(
+          context: context,
+          builder: (_) => const MyCustomLoading(),
+        );
         final product = context.read<TextFieldProvider>();
         context
             .read<ProductProvider>()
@@ -19,7 +24,10 @@ class MySaveFAB extends StatelessWidget {
               quantity: int.parse(product.quantity.text),
               description: product.description.text,
             )
-            .whenComplete(() => Navigator.pop(context));
+            .whenComplete(() {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        });
       },
       child: const Icon(
         Icons.save_rounded,

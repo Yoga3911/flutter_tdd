@@ -62,7 +62,7 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
       const header = {
         'Content-Type': 'application/json',
         'Authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3MjEyMjYzLCJpYXQiOjE2NTcxMjU4NjMsImlzcyI6Im15cHJvamVjdCJ9.R8SPUfHKK_h6ro7uDT6rA5W0IkUa4SomaFO-ZjdA5j8',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3NjI0OTQyLCJpYXQiOjE2NTc1Mzg1NDIsImlzcyI6Im15cHJvamVjdCJ9.vWpzfGSb_BMZ2JafirhkKzGMtvzuVbvrzxLOu8hiNjs',
       };
 
       final body = jsonEncode(insertProductModel.toJson());

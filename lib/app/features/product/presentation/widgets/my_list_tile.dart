@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
 import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
-import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../utils/custom_loading.dart';
+import '../../data/models/delete_product_model.dart';
+import '../providers/products_provider.dart';
 
 class MyListTile extends StatelessWidget {
   const MyListTile({super.key, required this.product});
@@ -15,11 +17,20 @@ class MyListTile extends StatelessWidget {
       trailing: IconButton(
         splashRadius: 25,
         onPressed: () {
-          context.read<ProductProvider>().deleteProduct(
+          showDialog(
+            context: context,
+            builder: (_) => const MyCustomLoading(),
+          );
+          context
+              .read<ProductProvider>()
+              .deleteProduct(
                 DeleteProductModel(
                   productId: product.id,
                   userId: "fc8445b1-9a74-4416-969c-2c69e5dc5686",
                 ),
+              )
+              .whenComplete(
+                () => Navigator.pop(context),
               );
         },
         icon: const Icon(
