@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/app/features/product/presentation/providers/textfield_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/my_back_btn.dart';
 import '../widgets/my_insert_product.dart';
@@ -16,7 +18,10 @@ class InsertProductPage extends StatelessWidget {
         leading: const MyBackBtn(),
       ),
       floatingActionButton: const MySaveFAB(),
-      body: const MyInsertProduct(),
+      body: ChangeNotifierProvider(
+        create: (_) => TextFieldProvider(),
+        child: const MyInsertProduct(),
+      ),
     );
   }
 }

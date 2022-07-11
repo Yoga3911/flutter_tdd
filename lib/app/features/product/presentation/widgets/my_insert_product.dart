@@ -9,6 +9,7 @@ class MyInsertProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<TextFieldProvider>();
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
@@ -17,19 +18,19 @@ class MyInsertProduct extends StatelessWidget {
       child: Column(
         children: [
           MyTextField(
-            controller: context.read<TextFieldProvider>().productName,
+            controller: controller.productName,
             label: "Product Name",
           ),
           MyTextField(
-            controller: context.read<TextFieldProvider>().price,
+            controller: controller.price,
             label: "Price",
           ),
           MyTextField(
-            controller: context.read<TextFieldProvider>().quantity,
+            controller: controller.quantity,
             label: "Quantity",
           ),
           MyTextField(
-            controller: context.read<TextFieldProvider>().description,
+            controller: controller.description,
             label: "Description",
           ),
         ],
