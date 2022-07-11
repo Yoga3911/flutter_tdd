@@ -9,7 +9,7 @@ class InsertProductUseCase
     implements UseCase<InsertProductEntity, InsertProductModel> {
   final ProductDataRepository repository;
 
-  InsertProductUseCase({required this.repository});
+  const InsertProductUseCase({required this.repository});
 
   @override
   Future<Either<Failure, InsertProductEntity>> call(

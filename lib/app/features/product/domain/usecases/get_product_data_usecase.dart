@@ -7,7 +7,7 @@ import 'package:my_project/app/features/product/domain/repositories/product_data
 class GetProductDataUseCase implements UseCase<List<ProductEntity>, Params> {
   final ProductDataRepository repository;
 
-  GetProductDataUseCase({required this.repository});
+  const GetProductDataUseCase({required this.repository});
 
   @override
   Future<Either<Failure, List<ProductEntity>>> call(Params _) async {
