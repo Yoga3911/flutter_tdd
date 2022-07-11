@@ -4,7 +4,6 @@ import 'package:my_project/app/features/product/data/models/product_model.dart';
 import 'package:my_project/app/core/exceptions/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:my_project/app/features/product/data/sources/product_data_remote.dart';
-import 'package:my_project/app/features/product/domain/entities/delete_product_entity.dart';
 import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
 import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 import 'package:my_project/app/features/product/domain/repositories/product_data_repository.dart';
