@@ -62,7 +62,7 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
       const header = {
         'Content-Type': 'application/json',
         'Authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3NjI0OTQyLCJpYXQiOjE2NTc1Mzg1NDIsImlzcyI6Im15cHJvamVjdCJ9.vWpzfGSb_BMZ2JafirhkKzGMtvzuVbvrzxLOu8hiNjs',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3NzE1ODUzLCJpYXQiOjE2NTc2Mjk0NTMsImlzcyI6Im15cHJvamVjdCJ9.SBsX3mdCwhqoI4vv-kPJYWGRsW26q8lxRqdM0q8paZ4',
       };
 
       final body = jsonEncode(insertProductModel.toJson());
@@ -105,7 +105,7 @@ class ProductDataSourceRemoteImpl implements ProductDataSourceRemote {
       const header = {
         "Content-Type": "application/json",
         'Authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3NjI0OTQyLCJpYXQiOjE2NTc1Mzg1NDIsImlzcyI6Im15cHJvamVjdCJ9.vWpzfGSb_BMZ2JafirhkKzGMtvzuVbvrzxLOu8hiNjs',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVrbzEyMyIsImVtYWlsIjoiZWtvQGdtYWlsLmNvbSIsImFkZHJlc3MiOiJKbCBLZW5hbmdhIDEyIiwicm9sZV9pZCI6MiwiZXhwIjoxNjU3NzE1ODUzLCJpYXQiOjE2NTc2Mjk0NTMsImlzcyI6Im15cHJvamVjdCJ9.SBsX3mdCwhqoI4vv-kPJYWGRsW26q8lxRqdM0q8paZ4',
       };
 
       final body = jsonEncode(deleteProductModel.toJson());

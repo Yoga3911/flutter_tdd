@@ -11,16 +11,16 @@ class InsertProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add Product"),
-        automaticallyImplyLeading: false,
-        leading: const MyBackBtn(),
-      ),
-      floatingActionButton: const MySaveFAB(),
-      body: ChangeNotifierProvider(
-        create: (_) => TextFieldProvider(),
-        child: const MyInsertProduct(),
+    return ChangeNotifierProvider(
+      create: (_) => TextFieldProvider(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Add Product"),
+          automaticallyImplyLeading: false,
+          leading: const MyBackBtn(),
+        ),
+        floatingActionButton: const MySaveFAB(),
+        body: const MyInsertProduct(),
       ),
     );
   }

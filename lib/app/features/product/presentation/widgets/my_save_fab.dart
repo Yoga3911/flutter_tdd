@@ -9,13 +9,13 @@ class MySaveFAB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = context.read<TextFieldProvider>();
     return FloatingActionButton(
       onPressed: () {
         showDialog(
           context: context,
           builder: (_) => const MyCustomLoading(),
         );
-        final product = context.read<TextFieldProvider>();
         context
             .read<ProductProvider>()
             .insertProduct(
@@ -24,10 +24,12 @@ class MySaveFAB extends StatelessWidget {
               quantity: int.parse(product.quantity.text),
               description: product.description.text,
             )
-            .whenComplete(() {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        });
+            .whenComplete(
+          () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
       },
       child: const Icon(
         Icons.save_rounded,
