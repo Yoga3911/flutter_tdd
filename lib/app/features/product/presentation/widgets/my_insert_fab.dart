@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/core/routes/routes.dart';
+
+import '../../../../core/routes/routes.dart';
 
 class MyInsertFAB extends StatelessWidget {
   const MyInsertFAB({super.key});
@@ -7,10 +8,13 @@ class MyInsertFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(
-        context,
-        MyRoute.insertProduct,
-      ),
+      onPressed: () {
+        Navigator.pushNamed(
+          context,
+          MyRoute.actionProduct,
+          arguments: {"title": "Add Product"}
+        );
+      },
       child: const Icon(Icons.add_rounded),
     );
   }

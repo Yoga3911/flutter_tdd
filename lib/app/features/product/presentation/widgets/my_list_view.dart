@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/core/constants/color.dart';
-import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/constants/color.dart';
+import '../../presentation/providers/products_provider.dart';
 import 'my_list_tile.dart';
 
 class MyListView extends StatelessWidget {

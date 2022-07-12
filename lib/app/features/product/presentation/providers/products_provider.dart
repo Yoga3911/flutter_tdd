@@ -1,17 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:dartz/dartz.dart';
-import 'package:my_project/app/core/routes/routes_import.dart';
-import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
-import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
-import 'package:my_project/app/features/product/data/models/product_model.dart';
-import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
-import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
-import 'package:my_project/app/features/product/domain/usecases/delete_product_data_usecase.dart';
-import 'package:my_project/app/features/product/domain/usecases/insert_product_usecase.dart';
 
-import '../../../../../injection.dart';
-import '../../../../core/exceptions/failures.dart';
-import '../../../../core/usecase/usecase.dart';
-import '../../domain/usecases/get_product_data_usecase.dart';
+import 'provider_import.dart';
 
 class ProductProvider with ChangeNotifier {
   late GetProductDataUseCase getProduct;
@@ -27,6 +17,11 @@ class ProductProvider with ChangeNotifier {
   }
 
   factory ProductProvider() => _single;
+
+  ProductEntity? _selectProduct;
+  set setSelectProduct(ProductEntity productEntity) =>
+      _selectProduct = productEntity;
+  ProductEntity get getSelectProduct => _selectProduct!;
 
   List<ProductEntity> _productData = [];
   set setProductData(List<ProductEntity> data) {

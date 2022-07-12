@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/features/product/presentation/providers/products_provider.dart';
-import 'package:my_project/app/features/product/presentation/providers/textfield_provider.dart';
-import 'package:my_project/app/utils/custom_loading.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../utils/custom_loading.dart';
+import '../../presentation/providers/products_provider.dart';
+import '../../presentation/providers/textfield_provider.dart';
 
 class MySaveFAB extends StatelessWidget {
   const MySaveFAB({super.key});

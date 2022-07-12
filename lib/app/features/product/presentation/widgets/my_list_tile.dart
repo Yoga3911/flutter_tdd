@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/routes/routes.dart';
 import '../../../../utils/custom_loading.dart';
 import '../../data/models/delete_product_model.dart';
+import '../../domain/entities/product_entity.dart';
 import '../providers/products_provider.dart';
 
 class MyListTile extends StatelessWidget {
@@ -12,8 +13,19 @@ class MyListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider = context.read<ProductProvider>();
     return ListTile(
       title: Text(product.name),
+      onTap: () {
+        productProvider.setSelectProduct = product;
+        Navigator.pushNamed(
+          context,
+          MyRoute.actionProduct,
+          arguments: {
+            "title": "Edit Product",
+          },
+        );
+      },
       trailing: IconButton(
         splashRadius: 25,
         onPressed: () {
