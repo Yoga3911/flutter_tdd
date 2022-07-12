@@ -23,6 +23,7 @@ class MyListTile extends StatelessWidget {
           MyRoute.actionProduct,
           arguments: {
             "title": "Edit Product",
+            "product": product,
           },
         );
       },
