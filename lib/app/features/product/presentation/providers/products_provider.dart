@@ -71,6 +71,8 @@ class ProductProvider with ChangeNotifier {
     return data.value;
   }
 
+  Future<void> editProduct() async {}
+
   Future<void> deleteProduct(DeleteProductModel deleteProductModel) async {
     await removeProduct.call(deleteProductModel) as Right<Failure, dynamic>;
     deleteProductData = deleteProductModel.productId;
