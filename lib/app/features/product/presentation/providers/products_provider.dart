@@ -64,6 +64,7 @@ class ProductProvider with ChangeNotifier {
       name: productName,
       price: price,
       quantity: quantity,
+      description: description,
     );
     final data = await addProduct.call(insertData)
         as Right<Failure, InsertProductEntity>;
