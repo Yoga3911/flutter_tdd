@@ -1,8 +1,8 @@
-import 'package:my_project/app/core/exceptions/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:my_project/app/core/usecase/usecase.dart';
-import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
 
+import '../../../../core/exceptions/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../../data/models/delete_product_model.dart';
 import '../repositories/product_data_repository.dart';
 
 class DeleteDataUseCase implements UseCase<dynamic, DeleteProductModel> {
