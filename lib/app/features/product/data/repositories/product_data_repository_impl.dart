@@ -1,13 +1,13 @@
-import 'package:my_project/app/core/exceptions/exception.dart';
-import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
-import 'package:my_project/app/features/product/data/models/product_model.dart';
-import 'package:my_project/app/core/exceptions/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:my_project/app/features/product/data/sources/product_data_remote.dart';
-import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
-import 'package:my_project/app/features/product/domain/entities/product_entity.dart';
-import 'package:my_project/app/features/product/domain/repositories/product_data_repository.dart';
 
+import '../../../../core/exceptions/exception.dart';
+import '../../../../core/exceptions/failures.dart';
+import '../../data/models/delete_product_model.dart';
+import '../../data/models/product_model.dart';
+import '../../data/sources/product_data_remote.dart';
+import '../../domain/entities/insert_product_entity.dart';
+import '../../domain/entities/product_entity.dart';
+import '../../domain/repositories/product_data_repository.dart';
 import '../models/insert_product_model.dart';
 
 typedef _ProductData = Future<List<ProductModel>> Function();
