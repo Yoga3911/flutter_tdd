@@ -1,4 +1,4 @@
-import 'package:my_project/app/features/product/domain/entities/edit_product_entity.dart';
+import '../../domain/entities/edit_product_entity.dart';
 
 class EditProductModel extends EditProductEntity {
   const EditProductModel({
