@@ -1,4 +1,4 @@
-import 'package:my_project/app/features/product/domain/entities/delete_product_entity.dart';
+import '../../domain/entities/delete_product_entity.dart';
 
 class DeleteProductModel extends DeleteProductEntity {
   const DeleteProductModel({
