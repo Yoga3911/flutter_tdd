@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:my_project/app/features/product/data/models/delete_product_model.dart';
-import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
 
 import '../../../../core/constants/endpoint.dart';
+import '../../data/models/delete_product_model.dart';
+import '../../data/models/insert_product_model.dart';
 import '../models/product_model.dart';
 
 abstract class ProductDataSourceRemote {
