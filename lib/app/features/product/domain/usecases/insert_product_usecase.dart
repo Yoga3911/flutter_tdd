@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_project/app/core/exceptions/failures.dart';
-import 'package:my_project/app/core/usecase/usecase.dart';
-import 'package:my_project/app/features/product/data/models/insert_product_model.dart';
-import 'package:my_project/app/features/product/domain/entities/insert_product_entity.dart';
-import 'package:my_project/app/features/product/domain/repositories/product_data_repository.dart';
+
+import '../../../../core/exceptions/failures.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../../../../features/product/data/models/insert_product_model.dart';
+import '../../../../features/product/domain/entities/insert_product_entity.dart';
+import '../../../../features/product/domain/repositories/product_data_repository.dart';
 
 class InsertProductUseCase
     implements UseCase<InsertProductEntity, InsertProductModel> {
